@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Nunito');
+body {
+    background: url(https://unsplash.it/200/300);
+    font-family: 'Nunito', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.weather-box {
+    position: absolute;
+    
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /*background: rgba(23, 16, 16, 0.88);*/
+    box-shadow: 0px 0px 15px 3px #b9b9b9;
+    color: black;
+    text-align: center;
+    padding: 40px;
+}
+.weather-box input{
+    font-family: 'Bree Serif', serif;
+    color: black;
+}
+.twiter-api{
+        margin-top: 70px;
+
+}
+.twiter-api a{
+    text-decoration: none;
+    color: white;
+    text-transform: capitalize;
+    font-size: 18px;
+
+}
+.twiter-api .btn-custom{
+    background: #55acee;
+    border-radius: 0px;
+}
+.twiter-api {
+    top: 38%;
+    right: 0%;
+    transform: translate(-38%,-5%);
+    position: fixed;
+}
+/* Wide Mobile Layout: 480px. */
+@media only screen and (min-width: 300px) and (max-width: 767px) { 
+  input{
+    margin-bottom: 20px;
+  }
+}

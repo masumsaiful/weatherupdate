@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>weather</title>
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+</head>
+<body>
+<div class="container">
+   <div class="weather-box">
+    <p>Check Current Weather</p>
+   <div class="col-sm-12">
+    <h2 id="country">Country</h2>
+    <h3 id="city">City</h3>
+    <h3><span id="tempe">00</span><sup> 0</sup> C</h3>
+    <div class="col-sm-7">
+    <input type="text" name="text" class="form-control">
+    </div>
+    <div class="col-sm-5">
+    <button type="button" class="btn btn-info">Enter City Name</button>
+    <span id="err-mes"></span>
+    
+    </div>
+    
+   	
+   </div>
+   </div>
+   <div class="twiter-api">
+      <button type="button" class="btn btn-custom"><a class="twitter-share-button"
+          href="https://twitter.com/intent/tweet?text=">
+          Tweet</a></button>
+    	
+    </div>	
+</div>
+<span></span>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+
+
+	$(function(){
+          
+
+			$("button").click(function(){
+				
+				var citynam=$("input").val()
+				getweather(citynam);
+			})
+		function getweather(citynam){
+
+
+		$.ajax({
+			url:"http://api.apixu.com/v1/current.json?key=bc5f220be0fd480a96d63733172803&q="+citynam,
+			dataType:"json",
+			success:function(data){
+		    console.log(data);
+		    $("#city").text(data.location.name);
+		    $("#country").text(data.location.country);
+            $("#tempe").text(data.current.temp_c);
+            $("#err-mes").text();
+
+			},
+			error:function(){
+				$("#err-mes").text("plese enter correct city name");
+			}
+		})
+		}
+		$(".twitter-share-button").attr("title","Start tweeting");
+
+	})
+</script>
+
+
+</body>
+</html>
